@@ -2,11 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>build-dang-e</title>
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1,
+          minimum-scale=1,
+          maximum-scale=1,
+          user-scale=no,
+          shrink-to-fit=no"
+    >
+    <link rel="shortcut icon" href="https://img.yzcdn.cn/zanui/vant/vant-2017-12-18.ico">
+    <meta name="theme-color" content="#000000">
+    <title>信工党建e家</title>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    function resizeWindow() {
+      let deviceWidth = document.documentElement.clientWidth;
+      let rootRem = deviceWidth / 7.5 + 'px'
+      document.documentElement.style.fontSize = rootRem
+      // console.log(deviceWidth)
+      // console.log(rootRem)
+    }
+    resizeWindow()
+  </script>
 </html>
