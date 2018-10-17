@@ -6,8 +6,8 @@ import router from './router'
 
 import Vant from 'vant';
 import 'vant/lib/vant-css/index.css';
+import store from '@/store'
 
-import './iconfont/iconfont.css'
 
 Vue.use(Vant);
 
@@ -17,6 +17,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
