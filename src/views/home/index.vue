@@ -17,11 +17,11 @@
       </van-swipe>
     </div>
     <div class="sixToLink">
-      <router-link to="/" class="ingAndName">
+      <router-link to="/home/msgEyes" class="ingAndName">
         <img src="./imgs/icon_01.png" class="link-img">
         <p class="name">信工新闻眼</p>
       </router-link>
-      <router-link to="/" class="ingAndName">
+      <router-link to="/home/study" class="ingAndName">
         <img src="./imgs/icon_03.png" class="link-img">
         <p class="name">掌上组织生活</p>
       </router-link>
@@ -86,12 +86,6 @@
           console.log(err)
         })
       },
-      // hanleClick(url) {
-      //   this.$router.push({
-      //     name: 'news',
-      //     params: {id: url}
-      //   })
-      // }
     },
     created() {
       this.getImg()

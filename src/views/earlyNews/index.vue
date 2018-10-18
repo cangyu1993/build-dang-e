@@ -48,7 +48,6 @@
           // console.log(res)
           if (res.data.code == 1) {
             this.loading = false
-            Toast.success('获取信息成功!');
             let newData = [...res.data.rows]
             let newArr = newData.splice(0,newData.length)
             this.newsMsg = newArr

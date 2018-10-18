@@ -8,9 +8,11 @@ import Vant from 'vant';
 import 'vant/lib/vant-css/index.css';
 import store from '@/store'
 
+import axios from './until'
 
 Vue.use(Vant);
 
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 

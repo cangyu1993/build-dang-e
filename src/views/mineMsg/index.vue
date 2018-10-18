@@ -68,7 +68,7 @@
     data() {
       return {
         userData: {
-          avartor: 'http://img.bimg.126.net/photo/OyQCP7deIj1rlSU50IKRJw==/3945997698523498081.jpg',
+          avartor: 'http://imgsrc.baidu.com/forum/w%3D580%3B/sign=705fdc71bc3533faf5b6932698e8fc1f/d31b0ef41bd5ad6eb44331958ccb39dbb6fd3c12.jpg',
           username: ''
         },
         isShow: false
