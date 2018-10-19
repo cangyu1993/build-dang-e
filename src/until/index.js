@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-const baseURL = '/'
+const env = process.env.NODE_ENV
+
+let baseURL = env == 'development'? '/api' : '/'
 
 const instance = axios.create({
-  baseURL,
+  baseURL: baseURL,
   timeout: 15000,
 });
 
@@ -27,7 +29,7 @@ const xhr = {
     })
   },
   post(url, data, config){
-    return fetch(url, data,config,'post')
+    return this.fetch(url, data,config,'post')
   }
 }
 

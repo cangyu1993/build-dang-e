@@ -25,7 +25,7 @@
     <van-loading
       size="70px"
       v-if="loading"
-    class="loading"
+      class="loading"
     />
   </div>
 </template>
@@ -33,7 +33,7 @@
 <script>
   import headerTop from '@/components/header'
 
-  import { Toast } from 'vant';
+  import {Toast} from 'vant';
 
   export default {
     name: "index",
@@ -46,34 +46,32 @@
         userData: {
           idCard: '411524199310283218',
           password: '12345678',
-          avatar:''
+          avatar: ''
         },
-        loading:false
+        loading: false
       }
     },
     methods: {
       changeTitle() {
         this.$store.commit('CHANGE-HEADERTEXT', this.title)
       },
-      handliClick(){
-
+      handliClick() {
         this.loading = true
-
-        this.$axios.post('/login',this.userData).then(res=>{
+        this.$axios.post('/login', this.userData).then(res => {
           console.log(res)
-
-          if (res.code == 200) {
+          this.loading = false
+          if (res.data.code == 200) {
             Toast.success('登录成功');
             this.userData.idCard = res.userData.idCard
             this.userData.avatar = res.userData.avatar
-            this.$store.commit('CHANGGE-LOGIN-STATUS',this.userData)
+            this.$store.commit('CHANGGE-LOGIN-STATUS', this.userData)
             this.loading = false
             this.$router.back(-1)
-          }else {
+          }else{
             Toast.fail('登录失败');
             this.loading = false
           }
-        }).catch(err=>{
+        }).catch(err => {
           Toast('请求失败！')
         })
       }
@@ -86,12 +84,13 @@
 </script>
 
 <style scoped lang="scss">
-  .loading{
+  .loading {
     position: fixed;
     z-index: 998;
     top: 70%;
     left: 40%;
   }
+
   .loginAll {
     width: 100%;
     height: 100vh;
@@ -102,7 +101,7 @@
     align-items: center;
     .loginMsg {
       margin-top: 90px;
-      .logo{
+      .logo {
         display: block;
         width: 80%;
         height: 80%;
@@ -136,7 +135,7 @@
         background-color: #c50206;
         color: #ffffff;
       }
-      .btn{
+      .btn {
         width: 100%;
         margin-top: 10px;
         border-radius: 10px;

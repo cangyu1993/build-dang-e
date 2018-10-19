@@ -9,15 +9,14 @@
     <div class="selectAndNext">
       <select name="666" id="select" @change="seleteData">
         <option value="请选择">请选择</option>
-        <option :value="item.branch"
+        <option :value="item.id"
                 v-for="(item,index) in seletes"
                 :key="index"
-
         >
           {{item.branch}}
         </option>
       </select>
-      <van-button type="danger" class="next">下一步</van-button>
+      <van-button type="danger" class="next" @click="nextTo">下一步</van-button>
     </div>
 
   </div>
@@ -38,7 +37,8 @@
           title: '',
           content: ''
         },
-        seletes:[]
+        seletes:[],
+        dangId:""
       }
     },
     methods: {
@@ -64,7 +64,14 @@
       seleteData(event){
         // console.log(event)
         const msgSelete = event.target.value
-        console.log(msgSelete)
+        // console.log(msgSelete)
+        this.dangId = msgSelete
+      },
+      nextTo(){
+        this.$router.push({
+          name:'partyMember',
+          params:{id:this.dangId}
+        })
       }
     },
     created() {

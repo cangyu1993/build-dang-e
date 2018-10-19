@@ -190,7 +190,11 @@
     align-items: center;
     box-sizing: border-box;
     .ingAndName {
-      margin: 0 30px;
+      width: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       .link-img {
         width: 60px;
         height: 60px;

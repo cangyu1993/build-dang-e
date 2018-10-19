@@ -23,6 +23,7 @@ const components={
   MinZhuPingYi:()=>import('@/views/MinZhuPingYi'),
   historyToday:()=>import('@/views/historyToday'),
   shootHome:()=>import('@/views/shootHome'),
+  partyMember:()=>import('@/views/partyMember'),
 };
 
 
@@ -123,6 +124,11 @@ export default new Router({
       path: '/home/shootHome',
       name: 'shootHome',
       component: components.shootHome
+    },
+    {
+      path: '/home/study/commentFor/partyMember',
+      name: 'partyMember',
+      component: components.partyMember
     },
   ]
 })
