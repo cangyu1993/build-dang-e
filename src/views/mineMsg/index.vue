@@ -83,6 +83,8 @@
         }
       },
       outServer(){
+        const username=''
+        this.$store.commit('CHANGGE-LOGIN-STATUS',username)
         this.$router.push('/login')
         this.isShow = false
       }

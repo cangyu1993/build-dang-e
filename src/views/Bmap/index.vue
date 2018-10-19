@@ -39,12 +39,21 @@
         let marker1 = new BMap.Marker(pointBeiJing);
         map.addOverlay(marker0)
         map.addOverlay(marker1)
-        function addLabel(marker0,marker1){
-            let pointOne =marker0
-            let pointTwo =marker1
-
-        }
+        this.addLabel(map,pointBeiJing,pointSchool)
       },
+      addLabel(map,pointBeiJing,pointSchool){
+        let pointOne =pointBeiJing
+        let pointTwo =pointSchool
+        const titltOne = '信息工程学院学生流动党支部,支部书记：高洋 电话：13526395586'
+        const titltTwo01 = '信息工程学院学生党支部,支部书记：杨鑫 电话：0396-2853187'
+        const titltTwo02 = '信息工程学院党总支 总支书记：柳晓阳 电话：0396-285032'
+        let labelOne = new BMap.Label(titltOne,{position:pointOne, offset: new BMap.Size(5, -45)})
+        let labelTwo01 = new BMap.Label(titltTwo01,{position:pointTwo,offset: new BMap.Size(5, -65)})
+        let labelTwo02 = new BMap.Label(titltTwo02,{position:pointTwo,offset: new BMap.Size(5, -45)})
+        map.addOverlay(labelOne)
+        map.addOverlay(labelTwo01)
+        map.addOverlay(labelTwo02)
+      }
 
     },
     created() {
@@ -59,6 +68,7 @@
 
 <style scoped lang="scss">
   #container {
+    position: relative;
     margin-top: 45px;
     height: 620px;
     width: 100%;

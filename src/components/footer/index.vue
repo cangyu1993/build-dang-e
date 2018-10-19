@@ -1,17 +1,17 @@
 <template>
   <div class="footerList">
 
-    <router-link  class="item" :class="{active:$route.name === 'Home' }"  to="/">
+    <router-link  class="item" :class="{'changeColor':$route.name === 'Home' }"  to="/">
       <i class="iconfont icon-dang"></i>
       <div class="icon-title">首页</div>
     </router-link>
 
-    <router-link  class="item" :class="{active:$route.name === 'earlyNews'}"  to="/earlyNews" >
+    <router-link  class="item" :class="{'changeColor':$route.name === 'earlyNews'}"  to="/earlyNews" >
       <i class="iconfont icon-xiaoxi"></i>
       <div class="icon-title">消息早知道</div>
     </router-link>
 
-    <router-link  class="item" :class="{active:$route.name === 'mineMsg'}"  to="/mineMsg" >
+    <router-link  class="item" :class="{'changeColor':$route.name === 'mineMsg'}"  to="/mineMsg" >
       <i class="iconfont icon-wodedangxuan"></i>
       <div class="icon-title">我的党建</div>
     </router-link>
@@ -51,7 +51,7 @@
       font-size: 10px;
     }
   }
-  .active{
+  .changeColor{
     border-top: 2px solid #c7000a;
     color:#c7000a;
   }

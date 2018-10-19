@@ -18,6 +18,11 @@ const components={
   thinkingReport:()=>import('@/views/thinkingReport'),
   summarize:()=>import('@/views/summarize'),
   Bmap:()=>import('@/views/Bmap'),
+  commentFor:()=>import('@/views/commentFor'),
+  commentForChild:()=>import('@/views/commentForChild'),
+  MinZhuPingYi:()=>import('@/views/MinZhuPingYi'),
+  historyToday:()=>import('@/views/historyToday'),
+  shootHome:()=>import('@/views/shootHome'),
 };
 
 
@@ -93,6 +98,31 @@ export default new Router({
       path: '/home/study/Bmap',
       name: 'Bmap',
       component: components.Bmap
+    },
+    {
+      path: '/home/study/commentFor',
+      name: 'commentFor',
+      component: components.commentFor
+    },
+    {
+      path: '/home/study/commentFor/commentForChild',
+      name: 'commentForChild',
+      component: components.commentForChild
+    },
+    {
+      path: '/home/study/commentFor/MinZhuPingYi',
+      name: 'MinZhuPingYi',
+      component: components.MinZhuPingYi
+    },
+    {
+      path: '/home/historyToday',
+      name: 'historyToday',
+      component: components.historyToday
+    },
+    {
+      path: '/home/shootHome',
+      name: 'shootHome',
+      component: components.shootHome
     },
   ]
 })

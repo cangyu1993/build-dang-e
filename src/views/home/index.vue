@@ -29,18 +29,18 @@
         <img src="./imgs/icon_05.png" class="link-img">
         <p class="name">党员云互动</p>
       </router-link>
-      <router-link to="/" class="ingAndName">
+      <div @click="formDangToList" class="ingAndName">
         <img src="./imgs/icon_04.png" class="link-img">
         <p class="name">党建一点通</p>
-      </router-link>
-      <router-link to="/" class="ingAndName">
+      </div>
+      <div @click="FiveToList" class="ingAndName">
         <img src="./imgs/icon_06.png" class="link-img">
         <p class="name">党员亮身份</p>
-      </router-link>
-      <router-link to="/" class="ingAndName">
+      </div>
+      <div @click="SixToShow" class="ingAndName">
         <img src="./imgs/icon_02.png" class="link-img" style="padding-left: 10px">
         <p class="name">党史上的今天</p>
-      </router-link>
+      </div>
     </div>
     <div class="shiJiuBig">
       <img src="./imgs/banner01.png" class="shiJiuBig01">
@@ -48,10 +48,10 @@
     <div class="homeLastPart">
       <div class="left"></div>
       <div class="right">
-        <router-link to="/login" class="right-item"></router-link>
-        <router-link to="/login" class="right-item"></router-link>
-        <router-link to="/login" class="right-item"></router-link>
-        <router-link to="/login" class="right-item"></router-link>
+        <div @click="oneJump" class="right-item"></div>
+        <router-link to="/home/shootHome" class="right-item"></router-link>
+        <div @click="therrJump" class="right-item"></div>
+        <div @click="fourJump" class="right-item"></div>
       </div>
     </div>
     <div style="height: 45px"></div>
@@ -86,6 +86,42 @@
           console.log(err)
         })
       },
+      formDangToList(){
+        const title = '党建一点通'
+        this.$store.commit('CHANGE-HEADERTEXT',title)
+        this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
+        this.$router.push('/home/listShow')
+      },
+      FiveToList(){
+        const title = '党员亮身份'
+        this.$store.commit('CHANGE-HEADERTEXT',title)
+        this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
+        this.$router.push('/home/listShow')
+      },
+      SixToShow(){
+        const title = '党史上的今天'
+        this.$store.commit('CHANGE-HEADERTEXT',title)
+        this.$router.push('/home/historyToday')
+      },
+      oneJump(){
+        const title = '随时随地学'
+        this.$store.commit('CHANGE-HEADERTEXT',title)
+        this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
+        this.$router.push('/home/listShow')
+      },
+      therrJump(){
+        const title = '制度建设'
+        this.$store.commit('CHANGE-HEADERTEXT',title)
+        this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
+        this.$router.push('/home/listShow')
+      },
+      fourJump(){
+        const title = '特色活动'
+        this.$store.commit('CHANGE-HEADERTEXT',title)
+        this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
+        this.$router.push('/home/listShow')
+      }
+
     },
     created() {
       this.getImg()

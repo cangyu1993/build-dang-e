@@ -15,10 +15,10 @@
         <img src="./icon3.png" class="imgItem">
         <p class="title">心得总结</p>
       </div>
-      <router-link to="/" class="linkItem">
+      <div  @click="commentFor" class="linkItem">
         <img src="./icon4.png" class="imgItem">
         <p class="title">民主评议</p>
-      </router-link>
+      </div>
       <div @click="ToMap" class="linkItem">
         <img src="./icon5.png" class="imgItem">
         <p class="title">流动党员找组织</p>
@@ -63,6 +63,13 @@
         const title = "流动党员找组织"
         this.$store.commit('CHANGE-HEADERTEXT',title)
         this.$router.push('/home/study/Bmap')
+      },
+      commentFor(){
+        if(this.userName){
+          this.$router.push('/home/study/commentFor')
+        }else {
+          this.$router.push('/login')
+        }
       }
 
     },

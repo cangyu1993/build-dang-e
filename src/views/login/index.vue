@@ -32,7 +32,7 @@
 
 <script>
   import headerTop from '@/components/header'
-  import axios from 'axios'
+
   import { Toast } from 'vant';
 
   export default {
@@ -44,8 +44,9 @@
       return {
         title: '登陆',
         userData: {
-          idCard: '1001',
-          password: '123456'
+          idCard: '411524199310283218',
+          password: '12345678',
+          avatar:''
         },
         loading:false
       }
@@ -55,11 +56,17 @@
         this.$store.commit('CHANGE-HEADERTEXT', this.title)
       },
       handliClick(){
+
         this.loading = true
-        axios.post('http://211.67.177.56:8080/hhdj/user/userLogin.do',this.userData).then(res=>{
-          // console.log(res)
-          if (res.data.code == 1) {
+
+        this.$axios.post('/login',this.userData).then(res=>{
+          console.log(res)
+
+          if (res.code == 200) {
             Toast.success('登录成功');
+            this.userData.idCard = res.userData.idCard
+            this.userData.avatar = res.userData.avatar
+            this.$store.commit('CHANGGE-LOGIN-STATUS',this.userData)
             this.loading = false
             this.$router.back(-1)
           }else {

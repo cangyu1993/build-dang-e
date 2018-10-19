@@ -66,7 +66,56 @@
             }).catch(err => {
               console.log(err)
             })
-
+          case '党建一点通':
+            axios.get(`http://211.67.177.56:8080/hhdj/news/newsList.do?page=${this.page}&rows=10&type=3`).then(res => {
+              // console.log(res)
+              if (res.data.code == 1) {
+                this.dataMsg = [...this.dataMsg, ...res.data.rows]
+                // console.log(this.dataMsg)
+              }
+            }).catch(err => {
+              console.log(err)
+            })
+          case '党员亮身份':
+            axios.get(`http://211.67.177.56:8080/hhdj/news/newsList.do?page=${this.page}&rows=10&type=5`).then(res => {
+              // console.log(res)
+              if (res.data.code == 1) {
+                this.dataMsg = [...this.dataMsg, ...res.data.rows]
+                // console.log(this.dataMsg)
+              }
+            }).catch(err => {
+              console.log(err)
+            })
+          case '随时随地学':
+            axios.get(`http://211.67.177.56:8080/hhdj/news/newsList.do?page=${this.page}&rows=10&type=6`).then(res => {
+              // console.log(res)
+              if (res.data.code == 1) {
+                this.dataMsg = [...this.dataMsg, ...res.data.rows]
+                // console.log(this.dataMsg)
+              }
+            }).catch(err => {
+              console.log(err)
+            })
+          case '制度建设':
+            axios.get(`http://211.67.177.56:8080/hhdj/news/newsList.do?page=${this.page}&rows=10&type=4`).then(res => {
+              // console.log(res)
+              if (res.data.code == 1) {
+                this.dataMsg = [...this.dataMsg, ...res.data.rows]
+                // console.log(this.dataMsg)
+              }
+            }).catch(err => {
+              console.log(err)
+            })
+          case '特色活动':
+            axios.get(`http://211.67.177.56:8080/hhdj/news/newsList.do?page=${this.page}&rows=10&type=1`).then(res => {
+              // console.log(res)
+              if (res.data.code == 1) {
+                this.dataMsg = [...this.dataMsg, ...res.data.rows]
+                // console.log(this.dataMsg)
+              }
+            }).catch(err => {
+              console.log(err)
+            })
           default:
             return title
         }
@@ -77,7 +126,7 @@
       },
       handleClickToChild(id){
         this.$router.push({name: 'listShowChild',params: {id: id}})
-        console.log("6666")
+        // console.log("6666")
       }
     },
     created() {
