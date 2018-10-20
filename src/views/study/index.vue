@@ -66,12 +66,12 @@
         this.$router.push('/home/study/Bmap')
       },
       commentFor(){
-        this.$router.push('/home/study/commentFor')
-        // if(this.userName){
-        //   this.$router.push('/home/study/commentFor')
-        // }else {
-        //   this.$router.push('/login')
-        // }
+        // this.$router.push('/home/study/commentFor')
+        if(this.userName){
+          this.$router.push('/home/study/commentFor')
+        }else {
+          this.$router.push('/login')
+        }
       }
 
     },

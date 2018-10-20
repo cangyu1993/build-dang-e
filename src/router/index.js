@@ -24,6 +24,9 @@ const components={
   historyToday:()=>import('@/views/historyToday'),
   shootHome:()=>import('@/views/shootHome'),
   partyMember:()=>import('@/views/partyMember'),
+  personalInformation:()=>import('@/views/personalInformation'),
+  changePassword:()=>import('@/views/changePassword'),
+  payFor:()=>import('@/views/payFor'),
 };
 
 
@@ -129,6 +132,21 @@ export default new Router({
       path: '/home/study/commentFor/partyMember',
       name: 'partyMember',
       component: components.partyMember
+    },
+    {
+      path: '/home/personalInformation',
+      name: 'personalInformation',
+      component: components.personalInformation
+    },
+    {
+      path: '/home/changePassword',
+      name: 'changePassword',
+      component: components.changePassword
+    },
+    {
+      path: '/home/payFor',
+      name: 'payFor',
+      component: components.payFor
     },
   ]
 })

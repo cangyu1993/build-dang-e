@@ -9,7 +9,7 @@
     </div>
     <div class="userDetail">
 
-      <router-link to="/" class="message">
+      <div @click="handleToMsg" class="message">
         <div class="lfetFor">
           <img src="./imgs/01.png" class="img1">
           <p class="nameFor">个人信息</p>
@@ -17,7 +17,7 @@
          <div class="img2">
            <img src="./imgs/right.png" >
          </div>
-      </router-link>
+      </div>
 
       <router-link to="/" class="message">
         <div class="lfetFor">
@@ -28,16 +28,16 @@
            <img src="./imgs/right.png" >
          </div>
       </router-link>
-      <router-link to="/" class="message">
+      <div @click="changePassword" class="message">
         <div class="lfetFor">
           <img src="./imgs/03.png" class="img1">
-          <p class="nameFor">修改信息</p>
+          <p class="nameFor">修改密码</p>
         </div>
          <div class="img2">
            <img src="./imgs/right.png" >
          </div>
-      </router-link>
-      <router-link to="/" class="message">
+      </div>
+      <div @click="payForMoney" class="message">
         <div class="lfetFor">
           <img src="./imgs/04.png" class="img1">
           <p class="nameFor">党费缴纳</p>
@@ -45,7 +45,7 @@
          <div class="img2">
            <img src="./imgs/right.png" >
          </div>
-      </router-link>
+      </div>
     </div>
     <van-button type="danger"
                 v-if="isShow"
@@ -76,17 +76,52 @@
     },
     methods: {
       getData() {
+        this.userData.username = this.$store.state.userData.username
         if (!this.userData.username) {
           this.userData.username = '您未登录，请点击登录'
         } else {
           this.isShow = true
         }
+        let userJsonStr = sessionStorage.getItem('user')
+        let tryData = JSON.parse(userJsonStr)
+        // console.log(tryData)
+        if (tryData) {
+          this.userData.avartor = tryData.header
+        }
+        this.$store.commit('SAVE-USER-DETAIL',tryData)
       },
       outServer(){
         const username=''
         this.$store.commit('CHANGGE-LOGIN-STATUS',username)
         this.$router.push('/login')
         this.isShow = false
+      },
+      handleToMsg(){
+        const status = this.$store.state.userData.username
+        // console.log(status)
+        if(status){
+          this.$router.push('/home/personalInformation')
+        }else {
+          this.$router.push('/login')
+        }
+      },
+      changePassword(){
+        const status = this.$store.state.userData.username
+        // console.log(status)
+        if(status){
+          this.$router.push('/home/changePassword')
+        }else {
+          this.$router.push('/login')
+        }
+      },
+      payForMoney(){
+        const status = this.$store.state.userData.username
+        // console.log(status)
+        if(status){
+          this.$router.push('/home/payFor')
+        }else {
+          this.$router.push('/login')
+        }
       }
     },
     created() {

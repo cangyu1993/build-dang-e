@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <img src="../login/login.png" class="login">
-      <router-link to="/login" class="title">
+      <router-link to="/login" class="title" v-if="isShow">
         登录
       </router-link>
     </div>
@@ -72,10 +72,15 @@
     data() {
       return {
         imgs: [],
+        isShow:true
       }
     },
     methods: {
       getImg() {
+        const rightTitle = this.$store.state.userData.username
+        if (rightTitle){
+         this.isShow = false
+        }
         axios.get(`http://211.67.177.56:8080/hhdj/carousel/carouselList.do?type=0`).then(res => {
           // console.log(res)
           if (res.data.code == 1) {

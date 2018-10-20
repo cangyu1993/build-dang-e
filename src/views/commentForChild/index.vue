@@ -37,25 +37,23 @@
 
 
       onRead(event) {
+        console.log(event)
+
+
         const imgBase = event.content
         const str = 'base64,'
         const indexNum = imgBase.indexOf(str)
-        // console.log(indexNum)
         const imgBase64 = imgBase.substring(indexNum+7)
-        // console.log(imgBase64)
+
         this.imgs = [...this.imgs,imgBase]
+
         let formData = new FormData()
         formData.append('myFile', imgBase64)
-        axios.post('http://211.67.177.56:8080/hhdj/nationComment/submitSummary.do', formData,{
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            // 'Content-Type':'application/x-www-form-urlencoded',
-            // 'Content-Type':'application/json'
-          }
-        }).then(res => {
+        axios.post('http://211.67.177.56:8080/hhdj/image/uploadBase64.do', formData).then(res => {
           console.log(res)
         })
       },
+
       toServe() {
         if (this.imgs.length >= 1) {
           console.log("post请求没写")

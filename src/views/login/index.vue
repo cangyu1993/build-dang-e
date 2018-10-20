@@ -32,7 +32,7 @@
 
 <script>
   import headerTop from '@/components/header'
-
+  import axios from 'axios'
   import {Toast} from 'vant';
 
   export default {
@@ -44,8 +44,8 @@
       return {
         title: '登陆',
         userData: {
-          idCard: '411524199310283218',
-          password: '12345678',
+          idCard: '1001',
+          password: '123456',
           avatar: ''
         },
         loading: false
@@ -57,14 +57,18 @@
       },
       handliClick() {
         this.loading = true
-        this.$axios.post('/login', this.userData).then(res => {
-          console.log(res)
+        let formData=new FormData()
+        formData.append('id_card',this.userData.idCard)
+        formData.append('password',this.userData.password)
+
+          axios.post('http://211.67.177.56:8080/hhdj/user/userLogin.do', formData).then(res => {
+          // console.log(res)
           this.loading = false
-          if (res.data.code == 200) {
+          if (res.data.code == 1) {
             Toast.success('登录成功');
-            this.userData.idCard = res.userData.idCard
-            this.userData.avatar = res.userData.avatar
-            this.$store.commit('CHANGGE-LOGIN-STATUS', this.userData)
+            const detailData = res.data.data
+            sessionStorage.setItem('user', JSON.stringify(detailData));
+            this.$store.commit('CHANGGE-LOGIN-STATUS', detailData.username)
             this.loading = false
             this.$router.back(-1)
           }else{

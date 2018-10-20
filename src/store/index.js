@@ -8,23 +8,25 @@ const store = new Vuex.Store({
     headerText:'随时随地学',
     userData:{
       username:'',
-      avatar:'',
     },
     listTable:{
       title:''
-    }
+    },
+    userDetail:{},
   },
   mutations:{
     'CHANGE-HEADERTEXT'(state, payload){
       state.headerText = payload
     },
     'CHANGGE-LOGIN-STATUS'(state, payload){
-      state.userData.username = payload.idCard
-      state.userData.avatar = payload.avatar
+      state.userData.username = payload
     } ,
     'CHANGGE-LISTTABLE-TITLE'(state, payload){
       state.listTable.title = payload
-    }
+    },
+    'SAVE-USER-DETAIL'(state, payload){
+      state.userDetail = payload
+    },
   }
 })
 
