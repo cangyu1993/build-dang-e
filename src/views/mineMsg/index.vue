@@ -19,7 +19,7 @@
          </div>
       </div>
 
-      <router-link to="/" class="message">
+      <div @click="personIntegral" class="message">
         <div class="lfetFor">
           <img src="./imgs/02.png" class="img1">
           <p class="nameFor">个人量化积分</p>
@@ -27,7 +27,7 @@
          <div class="img2">
            <img src="./imgs/right.png" >
          </div>
-      </router-link>
+      </div>
       <div @click="changePassword" class="message">
         <div class="lfetFor">
           <img src="./imgs/03.png" class="img1">
@@ -119,6 +119,15 @@
         // console.log(status)
         if(status){
           this.$router.push('/home/payFor')
+        }else {
+          this.$router.push('/login')
+        }
+      },
+      personIntegral(){
+        const status = this.$store.state.userData.username
+        // console.log(status)
+        if(status){
+          this.$router.push('/home/personIntegral')
         }else {
           this.$router.push('/login')
         }

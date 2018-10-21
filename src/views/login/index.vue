@@ -67,8 +67,11 @@
           if (res.data.code == 1) {
             Toast.success('登录成功');
             const detailData = res.data.data
+            const token = res.data.token
             sessionStorage.setItem('user', JSON.stringify(detailData));
             this.$store.commit('CHANGGE-LOGIN-STATUS', detailData.username)
+            this.$store.commit('SAVE-TOKEN',token)
+
             this.loading = false
             this.$router.back(-1)
           }else{

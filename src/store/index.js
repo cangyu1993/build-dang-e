@@ -13,6 +13,7 @@ const store = new Vuex.Store({
       title:''
     },
     userDetail:{},
+    token:""
   },
   mutations:{
     'CHANGE-HEADERTEXT'(state, payload){
@@ -26,6 +27,9 @@ const store = new Vuex.Store({
     },
     'SAVE-USER-DETAIL'(state, payload){
       state.userDetail = payload
+    },
+    'SAVE-TOKEN'(state, payload){
+      state.token = payload
     },
   }
 })

@@ -27,6 +27,8 @@ const components={
   personalInformation:()=>import('@/views/personalInformation'),
   changePassword:()=>import('@/views/changePassword'),
   payFor:()=>import('@/views/payFor'),
+  personIntegral:()=>import('@/views/personIntegral'),
+  countDetail:()=>import('@/views/countDetail'),
 };
 
 
@@ -147,6 +149,16 @@ export default new Router({
       path: '/home/payFor',
       name: 'payFor',
       component: components.payFor
+    },
+    {
+      path: '/home/personIntegral',
+      name: 'personIntegral',
+      component: components.personIntegral
+    },
+    {
+      path: '/home/countDetail',
+      name: 'countDetail',
+      component: components.countDetail
     },
   ]
 })

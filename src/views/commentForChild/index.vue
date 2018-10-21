@@ -37,19 +37,18 @@
 
 
       onRead(event) {
-        console.log(event)
-
-
+        // console.log(event)
         const imgBase = event.content
         const str = 'base64,'
         const indexNum = imgBase.indexOf(str)
         const imgBase64 = imgBase.substring(indexNum+7)
 
         this.imgs = [...this.imgs,imgBase]
-
+        // const token = this.$store.state.token
         let formData = new FormData()
         formData.append('myFile', imgBase64)
-        axios.post('http://211.67.177.56:8080/hhdj/image/uploadBase64.do', formData).then(res => {
+        // formData.append('token', token)
+        this.$axios.post('/hhdj/image/uploadBase64.do', formData).then(res => {
           console.log(res)
         })
       },

@@ -1,11 +1,13 @@
 import axios from 'axios'
 
+
+
 const env = process.env.NODE_ENV
 
-let baseURL = env == 'development'? '/api' : '/'
+const baseURL = env == 'development'? '/api' : '/'
 
 const instance = axios.create({
-  baseURL: baseURL,
+  baseURL,
   timeout: 15000,
 });
 
