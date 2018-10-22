@@ -30,8 +30,21 @@ const store = new Vuex.Store({
     },
     'SAVE-TOKEN'(state, payload){
       state.token = payload
+      localStorage.token = payload
+      sessionStorage.token = payload
     },
-  }
+  },
+  // plugins:[
+  //   createPersistedState({
+  //     storage:{
+  //       getItem:key=>localStorage.getItem(key),
+  //       setItem:(key,value)=>{
+  //         localStorage.setItem(key,value)
+  //       },
+  //       removeItem:key=>localStorage.removeItem(key)
+  //     }
+  //   })
+  // ]
 })
 
 

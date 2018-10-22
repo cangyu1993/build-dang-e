@@ -9,10 +9,14 @@
     <div class="sider">
       <van-swipe :autoplay="3000" class="sider-item">
         <van-swipe-item v-for="(item,index) in imgs" :key="index">
+
+          <!--<img :src='item.imgUrl' class="imgSize" @click="toDetail(item.url)">-->
+
           <router-link :to="{name: 'news',params: {id: item.url}}">
             <img :src='item.imgUrl' class="imgSize">
             <p class="imgTitle">{{item.title}}</p>
           </router-link>
+
         </van-swipe-item>
       </van-swipe>
     </div>
@@ -125,7 +129,15 @@
         this.$store.commit('CHANGE-HEADERTEXT',title)
         this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
         this.$router.push('/home/listShow')
-      }
+      },
+      // toDetail(id){
+      //   this.$router.push({
+      //     name:'news',
+      //     params:{
+      //       id:id
+      //     }
+      //   })
+      // }
 
     },
     created() {

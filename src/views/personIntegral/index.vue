@@ -116,6 +116,9 @@
           const title = '个人量化积分'
           this.$store.commit('CHANGE-HEADERTEXT', title)
           this.userData = this.$store.state.userDetail
+          axios.get('http://211.67.177.56:8080/hhdj/user/userInfo.do').then(res=>{
+            console.log(res)
+          })
           // console.log(this.userData)
         }else {
           Toast('登陆状态失效，请重新登陆！');

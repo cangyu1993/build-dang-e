@@ -71,6 +71,7 @@
             sessionStorage.setItem('user', JSON.stringify(detailData));
             this.$store.commit('CHANGGE-LOGIN-STATUS', detailData.username)
             this.$store.commit('SAVE-TOKEN',token)
+            this.$store.commit('SAVE-USER-DETAIL',detailData)
 
             this.loading = false
             this.$router.back(-1)
