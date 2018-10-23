@@ -44,7 +44,7 @@
       return {
         title: '登陆',
         userData: {
-          idCard: '1001',
+          idCard: '1002',
           password: '123456',
           avatar: ''
         },
@@ -68,7 +68,10 @@
             Toast.success('登录成功');
             const detailData = res.data.data
             const token = res.data.token
+
             sessionStorage.setItem('user', JSON.stringify(detailData));
+            sessionStorage.setItem('token', JSON.stringify(token));
+
             this.$store.commit('CHANGGE-LOGIN-STATUS', detailData.username)
             this.$store.commit('SAVE-TOKEN',token)
             this.$store.commit('SAVE-USER-DETAIL',detailData)

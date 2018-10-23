@@ -38,13 +38,13 @@
     data() {
       return {
         title: '掌上组织生活',
-        userName:'',
+        userName:{},
       }
     },
     methods: {
       changeTitle() {
         this.$store.commit('CHANGE-HEADERTEXT', this.title)
-        this.userName =this.$store.state.userData.username
+        this.userName = JSON.parse(sessionStorage.getItem('user'))
       },
       hangClickToTwo(){
         // this.$router.push('/home/study/summarize')

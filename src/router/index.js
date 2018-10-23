@@ -29,6 +29,8 @@ const components={
   payFor:()=>import('@/views/payFor'),
   personIntegral:()=>import('@/views/personIntegral'),
   countDetail:()=>import('@/views/countDetail'),
+  cloudInteraction:()=>import('@/views/cloudInteraction'),
+  cloudInteractionChild:()=>import('@/views/cloudInteractionChild'),
 };
 
 
@@ -159,6 +161,16 @@ export default new Router({
       path: '/home/countDetail',
       name: 'countDetail',
       component: components.countDetail
+    },
+    {
+      path: '/home/cloudInteraction',
+      name: 'cloudInteraction',
+      component: components.cloudInteraction
+    },
+    {
+      path: '/home/cloudInteraction/cloudInteractionChild/:id',
+      name: 'cloudInteractionChild',
+      component: components.cloudInteractionChild
     },
   ]
 })

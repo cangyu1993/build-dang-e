@@ -45,6 +45,7 @@
         this.$store.commit('CHANGE-HEADERTEXT', title)
       },
       changeToServer(){
+        let token = JSON.parse(sessionStorage.getItem('token'))
         const newPassword = this.changeData.newPwd
         const againPassword = this.changeData.againPwd
         if ( newPassword === againPassword) {

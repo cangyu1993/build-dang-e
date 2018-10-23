@@ -31,7 +31,7 @@
         const titleNew='随时随地拍'
         this.$store.commit('CHANGE-HEADERTEXT',titleNew)
         axios.get('http://211.67.177.56:8080/hhdj/news/newsList.do?page=1&rows=10&type=7').then(res=>{
-          console.log(res)
+          // console.log(res)
           this.content = res.data.rows
         })
       }

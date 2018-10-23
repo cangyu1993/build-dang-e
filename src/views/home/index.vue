@@ -29,10 +29,10 @@
         <img src="./imgs/icon_03.png" class="link-img">
         <p class="name">掌上组织生活</p>
       </router-link>
-      <router-link to="/" class="ingAndName">
+      <div @click="cloudinteraction" class="ingAndName">
         <img src="./imgs/icon_05.png" class="link-img">
         <p class="name">党员云互动</p>
-      </router-link>
+      </div>
       <div @click="formDangToList" class="ingAndName">
         <img src="./imgs/icon_04.png" class="link-img">
         <p class="name">党建一点通</p>
@@ -81,15 +81,13 @@
     },
     methods: {
       getImg() {
-        const rightTitle = this.$store.state.userData.username
-        if (rightTitle){
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if (user){
          this.isShow = false
         }
         axios.get(`http://211.67.177.56:8080/hhdj/carousel/carouselList.do?type=0`).then(res => {
-          // console.log(res)
           if (res.data.code == 1) {
             this.imgs = res.data.rows
-            // console.log(this.imgs)
           }
         }).catch(err => {
           console.log(err)
@@ -130,15 +128,14 @@
         this.$store.commit('CHANGGE-LISTTABLE-TITLE',title)
         this.$router.push('/home/listShow')
       },
-      // toDetail(id){
-      //   this.$router.push({
-      //     name:'news',
-      //     params:{
-      //       id:id
-      //     }
-      //   })
-      // }
-
+      cloudinteraction(){
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if (user) {
+          this.$router.push('/home/cloudInteraction')
+        }else {
+          this.$router.push('/login')
+        }
+      }
     },
     created() {
       this.getImg()

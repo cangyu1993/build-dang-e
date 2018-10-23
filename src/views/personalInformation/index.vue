@@ -1,12 +1,16 @@
 <template>
   <div>
     <headerTop/>
-    <div class="purpose">编辑</div>
+    <div class="purpose" @click="changeMsg">{{this.stutes? "编辑":"保存"}}</div>
     <div class="personData">
       <van-cell-group>
         <div class="item img-frist">
           <span class="tot">头像</span>
-          <img :src="userData.header" class="img">
+          <img :src="userData.header" class="img" v-if="this.stutes">
+          <label  v-if="!this.stutes" class="img">
+            <img :src="userData.header" class="img">
+            <input type="file"  style="display: none" @change="changeImg">
+          </label>
         </div>
         <div class="item">
           <van-field v-model="userData.leadPerson"
@@ -129,8 +133,8 @@
       return {
         userData: {},
         value: "666",
-        stutes: false
-
+        stutes: true,
+        token:''
       }
     },
     methods: {
@@ -140,9 +144,50 @@
         this.userData = this.$store.state.userDetail
         // console.log(this.userData)
       },
+      changeMsg(){
+        let token = JSON.parse(sessionStorage.getItem('token'))
+        this.stutes = !this.stutes
+        if (this.stutes) {
+         let forData = new FormData()
+          axios.post('http://211.67.177.56:8080/hhdj/user/modifyInfo.do',forData,{
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'token':token
+            }
+          }).then(res=>{
+            console.log(res)
+          }).catch(err=>{
+            console.log(err)
+          })
+        }
+
+      },
+      //更改头像
+      getToken() {
+        axios.get('http://upload.yaojunrong.com/getToken').then(res => {
+          this.token = res.data.data
+        })
+      },
+      changeImg(event){
+        let file = event.target.files[0]
+        let formData = new FormData()
+        formData.append('file', file, 'file')
+        formData.append('token', this.token)
+        axios.post('https://upload-z1.qiniup.com', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            // 'Content-Type':'application/x-www-form-urlencoded',
+            // 'Content-Type':'application/json'
+          }
+        }).then(res => {
+          this.userData.header = res.data.url
+        })
+      }
+
     },
     created() {
       this.changeTitle()
+      this.getToken()
     }
 
   }
@@ -172,6 +217,7 @@
       .img{
         width: 50px;
         height: 50px;
+        /*vertical-align: middle*/
       }
     }
     .item {

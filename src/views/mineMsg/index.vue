@@ -76,11 +76,12 @@
     },
     methods: {
       getData() {
-        this.userData.username = this.$store.state.userData.username
-        if (!this.userData.username) {
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if (!user) {
           this.userData.username = '您未登录，请点击登录'
         } else {
           this.isShow = true
+          this.userData.username = user.username
         }
         let userJsonStr = sessionStorage.getItem('user')
         let tryData = JSON.parse(userJsonStr)
@@ -91,42 +92,40 @@
         this.$store.commit('SAVE-USER-DETAIL',tryData)
       },
       outServer(){
-        const username=''
-        this.$store.commit('CHANGGE-LOGIN-STATUS',username)
-        this.$router.push('/login')
         this.isShow = false
+        sessionStorage.clear()
+        this.getData()
       },
       handleToMsg(){
-        const status = this.$store.state.userData.username
+        const user = JSON.parse(sessionStorage.getItem('user'))
         // console.log(status)
-        if(status){
+        if(user){
           this.$router.push('/home/personalInformation')
         }else {
           this.$router.push('/login')
         }
       },
       changePassword(){
-        const status = this.$store.state.userData.username
+        const user = JSON.parse(sessionStorage.getItem('user'))
         // console.log(status)
-        if(status){
+        if(user){
           this.$router.push('/home/changePassword')
         }else {
           this.$router.push('/login')
         }
       },
       payForMoney(){
-        const status = this.$store.state.userData.username
+        const user = JSON.parse(sessionStorage.getItem('user'))
         // console.log(status)
-        if(status){
+        if(user){
           this.$router.push('/home/payFor')
         }else {
           this.$router.push('/login')
         }
       },
       personIntegral(){
-        const status = this.$store.state.userData.username
-        // console.log(status)
-        if(status){
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if(user){
           this.$router.push('/home/personIntegral')
         }else {
           this.$router.push('/login')

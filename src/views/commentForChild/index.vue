@@ -2,26 +2,28 @@
   <div>
     <headerTop/>
     <div class="img">
-      <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" multiple class="imgLoading">
-        <i class="iconfont icon-shangchuan"></i>
-      </van-uploader>
-    </div>
-    <div v-if="imgs.length"  class="imgsShow">
-      <img :src="item" class="imgItem" v-for="(item,index) in imgs" :key="index" >
+      <div v-if="imgs.length" class="imgsShow">
+        <img :src="item" class="imgItem" v-for="(item,index) in imgs" :key="index">
+      </div>
+      <uploading @getimgs="getSonimgs"/>
     </div>
     <van-button type="danger" class="toServe" @click="toServe">提交审核</van-button>
   </div>
 </template>
 
 <script>
+  import uploading from '@/components/uploading.vue'
+
   import headerTop from '@/components/header'
+
   import axios from 'axios'
+
   import {Toast} from 'vant';
 
   export default {
-    name: "uploading",
     components: {
-      headerTop
+      headerTop,
+      uploading
     },
     data() {
       return {
@@ -33,29 +35,35 @@
       changetitle() {
         const title = '个人总结'
         this.$store.commit('CHANGE-HEADERTEXT', title)
+        let user = JSON.parse(sessionStorage.getItem('user'))
+        // console.log(user)
       },
-
-
-      onRead(event) {
-        // console.log(event)
-        const imgBase = event.content
-        const str = 'base64,'
-        const indexNum = imgBase.indexOf(str)
-        const imgBase64 = imgBase.substring(indexNum+7)
-
-        this.imgs = [...this.imgs,imgBase]
-        // const token = this.$store.state.token
-        let formData = new FormData()
-        formData.append('myFile', imgBase64)
-        // formData.append('token', token)
-        this.$axios.post('/hhdj/image/uploadBase64.do', formData).then(res => {
-          console.log(res)
-        })
+      getSonimgs(e) {
+        this.imgs = [...this.imgs, e]
       },
-
       toServe() {
         if (this.imgs.length >= 1) {
-          console.log("post请求没写")
+
+          let token = JSON.parse(sessionStorage.getItem('token'))
+          let comment_id='CEBBD1A4FF2147C8B9ED0CEA6AE90BCF'
+
+          let forDate = new FormData()
+          forDate.append('pic_list',this.imgs)
+          forDate.append('comment_id',comment_id)
+          forDate.append('user_id',token)
+          axios.post('http://211.67.177.56:8080/hhdj/nationComment/submitSummary.do',forDate,{
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'token':token
+            }
+          }).then(res=>{
+            console.log(res)
+            if (res.data.code == 0) {
+              Toast('提交内容重复');
+            }else {
+              Toast.success(res.data.msg);
+            }
+          })
         } else {
           Toast('提交内容为空，请重新填写！');
         }
@@ -88,6 +96,7 @@
       }
     }
   }
+
   .imgsShow {
     display: flex;
     justify-content: flex-start;

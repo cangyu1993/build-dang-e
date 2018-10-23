@@ -7,7 +7,7 @@ const store = new Vuex.Store({
   state:{
     headerText:'随时随地学',
     userData:{
-      username:'',
+      username:'666',
     },
     listTable:{
       title:''
@@ -30,8 +30,6 @@ const store = new Vuex.Store({
     },
     'SAVE-TOKEN'(state, payload){
       state.token = payload
-      localStorage.token = payload
-      sessionStorage.token = payload
     },
   },
   // plugins:[

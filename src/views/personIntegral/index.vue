@@ -111,13 +111,13 @@
     },
     methods: {
       changeTitle() {
-        const username = this.$store.state.userData.username
-        if (username) {
+        const idCard = JSON.parse(sessionStorage.getItem('user')).idCard
+        if (idCard) {
           const title = '个人量化积分'
           this.$store.commit('CHANGE-HEADERTEXT', title)
           this.userData = this.$store.state.userDetail
           axios.get('http://211.67.177.56:8080/hhdj/user/userInfo.do').then(res=>{
-            console.log(res)
+            // console.log(res)
           })
           // console.log(this.userData)
         }else {

@@ -18,6 +18,141 @@
             +0.1
           </div>
         </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-left">
+            <p class="title">互动发帖</p>
+            <p class="time">2018-10-19 21:01:04</p>
+          </div>
+          <div class="item-right">
+            +0.1
+          </div>
+        </div>
 
       </van-list>
     </div>
@@ -43,9 +178,11 @@
       changeTitle() {
         const title = '积分明细'
         this.$store.commit('CHANGE-HEADERTEXT', title)
+      },
+      getData(){
         const token = this.$store.state.token
         axios.get(`http://211.67.177.56:8080/hhdj/integral/integralList.do?page=${this.page}&rows=10`).then(res => {
-          console.log(res)
+          // console.log(res)
           if (res.data.code == 1) {
             this.content = [...this.content, ...res.data.rows]
             // console.log(this.dataMsg)
