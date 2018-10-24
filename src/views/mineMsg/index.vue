@@ -2,7 +2,8 @@
   <div>
     <div class="header-new">我的党建</div>
     <div class="content">
-      <img :src="userData.avartor" class="img">
+      <img :src="userData.avartor" class="img" v-if="isShow">
+      <img src="./imgs/yuan.png" class="img" v-else>
       <router-link to="/login">
         <p class="userName">{{userData.username}}</p>
       </router-link>

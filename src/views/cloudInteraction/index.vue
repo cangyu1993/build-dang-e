@@ -97,26 +97,32 @@
         this.show = false
       },
       suerToSer(){
-        let token = JSON.parse(sessionStorage.getItem('token'))
-        let formData=new FormData()
-        formData.append('content',this.value)
-        formData.append('type',"1")
-        axios.post(`http://211.67.177.56:8080/hhdj/forum/saveForum.do`,formData,{
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'token':token
-          }
-        }).then(res=>{
-          console.log(res)
-          if (res.data.code == 0){
-            Toast('用户未登录');
-            this.show = false
-          }else {
-            Toast.success('发布成功');
-            this.show = false
-            this.getData()
-          }
-        })
+        if (this.value) {
+          let token = JSON.parse(sessionStorage.getItem('token'))
+          let formData=new FormData()
+          formData.append('content',this.value)
+          formData.append('type',"1")
+          axios.post(`http://211.67.177.56:8080/hhdj/forum/saveForum.do`,formData,{
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'token':token
+            }
+          }).then(res=>{
+            console.log(res)
+            if (res.data.code == 0){
+              Toast('用户未登录');
+              this.show = false
+            }else {
+              Toast.success('发布成功');
+              this.show = false
+              this.getData()
+            }
+          })
+        }else {
+          Toast("评论为空！");
+          this.show = false
+        }
+
       }
     },
     created() {

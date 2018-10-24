@@ -72,23 +72,28 @@
       commentsToAboue(){
         let token = JSON.parse(sessionStorage.getItem('token'))
         let id = this.$route.params.id
-        let forDate = new FormData()
-        forDate.append('forum_id',id)
-        forDate.append('comment',this.value)
-        axios.post(`http://211.67.177.56:8080/hhdj/forum/addComment.do`,forDate,{
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'token':token
-          }
-        }).then(res=>{
-          // console.log(res)
-          if (res.data.code == 0){
-            Toast(res.data.msg);
-          }else {
-            Toast.success('发布成功');
-            this.getData()
-          }
-        })
+        if (this.value) {
+          let forDate = new FormData()
+          forDate.append('forum_id',id)
+          forDate.append('comment',this.value)
+          axios.post(`http://211.67.177.56:8080/hhdj/forum/addComment.do`,forDate,{
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'token':token
+            }
+          }).then(res=>{
+            // console.log(res)
+            if (res.data.code == 0){
+              Toast(res.data.msg);
+            }else {
+              Toast.success('发布成功');
+              this.value = ''
+              this.getData()
+            }
+          })
+        }else {
+          Toast("评论为空！");
+        }
       }
     },
     created() {

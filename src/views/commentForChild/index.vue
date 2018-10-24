@@ -39,28 +39,29 @@
         // console.log(user)
       },
       getSonimgs(e) {
-        this.imgs = [...this.imgs, e]
+        console.log(e)
+        this.imgs = [...this.imgs, ...e.imgurl]
       },
       toServe() {
         if (this.imgs.length >= 1) {
 
           let token = JSON.parse(sessionStorage.getItem('token'))
-          let comment_id='CEBBD1A4FF2147C8B9ED0CEA6AE90BCF'
+          let comment_id = 'CEBBD1A4FF2147C8B9ED0CEA6AE90BCF'
 
           let forDate = new FormData()
-          forDate.append('pic_list',this.imgs)
-          forDate.append('comment_id',comment_id)
-          forDate.append('user_id',token)
-          axios.post('http://211.67.177.56:8080/hhdj/nationComment/submitSummary.do',forDate,{
+          forDate.append('pic_list', this.imgs)
+          forDate.append('comment_id', comment_id)
+          forDate.append('user_id', token)
+          axios.post('http://211.67.177.56:8080/hhdj/nationComment/submitSummary.do', forDate, {
             headers: {
               'Content-Type': 'multipart/form-data',
-              'token':token
+              'token': token
             }
-          }).then(res=>{
+          }).then(res => {
             console.log(res)
             if (res.data.code == 0) {
               Toast('提交内容重复');
-            }else {
+            } else {
               Toast.success(res.data.msg);
             }
           })

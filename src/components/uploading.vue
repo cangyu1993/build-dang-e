@@ -13,7 +13,11 @@
     name: "uploading",
     data(){
       return{
-        token:''
+        token:'',
+        img:{
+          img64:'',
+          imgurl:''
+        }
       }
     },
     methods:{
@@ -24,6 +28,7 @@
       },
       getImgUrl(event){
         let file = event.target.files[0]
+
         let formData = new FormData()
         formData.append('file', file, 'file')
         formData.append('token', this.token)
@@ -35,7 +40,8 @@
           }
         }).then(res => {
           // console.log(res.data.url)
-          this.$emit('getimgs',res.data.url)
+          this.img.imgurl = res.data.url
+          this.$emit('getimgs',this.img)
         })
       }
     },
