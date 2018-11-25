@@ -13,7 +13,7 @@
           <!--<img :src='item.imgUrl' class="imgSize" @click="toDetail(item.url)">-->
 
           <router-link :to="{name: 'news',params: {id: item.url}}">
-            <img :src='item.imgUrl' class="imgSize">
+            <img v-lazy='item.imgUrl' class="imgSize">
             <p class="imgTitle">{{item.title}}</p>
           </router-link>
 
@@ -232,7 +232,7 @@
   .homeLastPart {
     width: 100%;
     height: 165px;
-    background: url("./imgs/zhuanlan.png");
+    background: url("../../assets/zhuanlan.png");
     background-size: 100% 100%;
     display: flex;
     justify-content: flex-start;

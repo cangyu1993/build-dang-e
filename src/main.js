@@ -6,11 +6,19 @@ import router from './router'
 
 import Vant from 'vant';
 import 'vant/lib/vant-css/index.css';
-import store from '@/store'
+import store from '@/store';
+import VueLazyload from 'vue-lazyload'
 
 import axios from '@/until'
 
 Vue.use(Vant);
+
+Vue.use(VueLazyload,{
+  preLoad:1.3,
+  error:require('./assets/error.jpg'),
+  loading:require('./assets/load.gif'),
+  attempt:1
+});
 
 Vue.prototype.$axios = axios
 
