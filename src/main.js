@@ -3,14 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import axios from '@/until'
 import Vant from 'vant';
 import 'vant/lib/vant-css/index.css';
-import store from '@/store';
 import VueLazyload from 'vue-lazyload'
-
-import axios from '@/until'
-
+import store from '@/store';
 Vue.use(Vant);
 
 Vue.use(VueLazyload,{
